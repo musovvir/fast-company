@@ -1,26 +1,12 @@
-import React, { useState } from "react";
-import api from "../api";
+import React from "react";
 import User from "./user";
+import SearchStatus from "./searchStatus";
 
-const Users = () => {
-  const [users, setUsers] = useState(api.users.fetchAll());
-  const handleDelete = (usersId) => {
-    setUsers(users.filter((user) => usersId !== user._id));
-  };
-  const renderPhrase = (number) => {
-    if (number === 2 || number === 3 || number === 4) {
-      return `${number} человека тусанeт с тобой сегодня`;
-    }
-    if (number <= 0) {
-      return `С тобой никто не тусанет сегодня :(`;
-    } else {
-      return `${number} человек тусанут с тобой сегодня`;
-    }
-  };
+const Users = ({ handleDelete, renderPhrase, users }) => {
   return (
     <>
-      <span class="badge bg-primary">{renderPhrase(users.length)}</span>
-      <table class="table">
+      <SearchStatus renderPhrase={renderPhrase} users={users} />
+      <table className="table">
         <thead>
           <tr>
             <th scope="col">Имя</th>

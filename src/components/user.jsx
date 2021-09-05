@@ -1,8 +1,8 @@
 import React from "react";
 import Quality from "./quality";
 
-const User = (props) => {
-  const user = props.users.map((user) => {
+const User = ({ handleDelete, users }) => {
+  const user = users.map((user) => {
     return (
       <>
         <tr>
@@ -13,7 +13,7 @@ const User = (props) => {
           <td>{user.rate}</td>
           <td>
             <button
-              onClick={() => props.handleDelete(user._id)}
+              onClick={() => handleDelete(user._id)}
               className="btn btn-danger"
             >
               Delete
