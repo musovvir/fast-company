@@ -2,7 +2,7 @@ import React from "react";
 import User from "./user";
 import SearchStatus from "./searchStatus";
 
-const Users = ({ handleDelete, renderPhrase, users }) => {
+const Users = ({ handleStatus, handleDelete, renderPhrase, users, status }) => {
   return (
     <>
       <SearchStatus renderPhrase={renderPhrase} users={users} />
@@ -14,10 +14,13 @@ const Users = ({ handleDelete, renderPhrase, users }) => {
             <th scope="col">Профессия</th>
             <th scope="col">Встретился, раз</th>
             <th scope="col">Оценка</th>
+            <th scope="col">Избранное</th>
           </tr>
         </thead>
         <tbody>
-          <User users={users} handleDelete={handleDelete} />
+          {users.map((user) => (
+            <User user={user} handleDelete={handleDelete} />
+          ))}
         </tbody>
       </table>
     </>
