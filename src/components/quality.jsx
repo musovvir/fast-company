@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 const Quality = ({ qualities }) => {
   const quality = qualities.map((quality, i) => {
@@ -10,6 +11,10 @@ const Quality = ({ qualities }) => {
   });
 
   return <th>{quality}</th>;
+};
+
+Quality.propTypes = {
+  qualities: PropTypes.array.isRequired
 };
 
 export default Quality;

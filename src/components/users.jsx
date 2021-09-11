@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useState } from "react";
 import User from "./user";
 import SearchStatus from "./searchStatus";
+import Pagination from "./pagination";
+import { paginate } from "../utils/paginate";
+import PropTypes from "prop-types";
 
-const Users = ({ handleStatus, handleDelete, renderPhrase, users, status }) => {
+const Users = ({ handleDelete, renderPhrase, users: allUsers }) => {
+  const count = allUsers.length;
+  const pageSize = 4;
+  const [currentPage, setCurrentPage] = useState(1);
+  const handlePageChange = (pageIndex) => {
+    setCurrentPage(pageIndex);
+  };
+  const users = paginate(allUsers, currentPage, pageSize);
   return (
     <>
-      <SearchStatus renderPhrase={renderPhrase} users={users} />
+      <SearchStatus renderPhrase={renderPhrase} users={allUsers} />
       <table className="table">
         <thead>
           <tr>
@@ -19,12 +29,24 @@ const Users = ({ handleStatus, handleDelete, renderPhrase, users, status }) => {
         </thead>
         <tbody>
           {users.map((user) => (
-            <User user={user} handleDelete={handleDelete} />
+            <User key={user.id} user={user} handleDelete={handleDelete} />
           ))}
         </tbody>
       </table>
+      <Pagination
+        itemsCount={count}
+        pageSize={pageSize}
+        currentPage={currentPage}
+        onPageChange={handlePageChange}
+      />
     </>
   );
+};
+
+Users.propTypes = {
+  handleDelete: PropTypes.func.isRequired,
+  renderPhrase: PropTypes.func.isRequired,
+  users: PropTypes.object.isRequired
 };
 
 export default Users;

@@ -1,8 +1,9 @@
 import React from "react";
 import Quality from "./quality";
 import BookMark from "./bookMark";
+import PropTypes from "prop-types";
 
-const User = ({ handleStatus, handleDelete, user, status }) => {
+const User = ({ handleDelete, user }) => {
   return (
     <tr>
       <td>{user.name}</td>
@@ -11,7 +12,7 @@ const User = ({ handleStatus, handleDelete, user, status }) => {
       <td>{user.completedMeetings}</td>
       <td>{user.rate}</td>
       <td>
-        <BookMark handleStatus={handleStatus} />
+        <BookMark />
       </td>
       <td>
         <button
@@ -23,6 +24,11 @@ const User = ({ handleStatus, handleDelete, user, status }) => {
       </td>
     </tr>
   );
+};
+
+User.propTypes = {
+  handleDelete: PropTypes.func.isRequired,
+  user: PropTypes.array.isRequired
 };
 
 export default User;
