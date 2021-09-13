@@ -3,7 +3,7 @@ import React, { useState } from "react";
 const BookMark = () => {
   const [favorite, setFavorite] = useState(false);
   const isFavorite = () => (favorite ? setFavorite(false) : setFavorite(true));
-  const qwer = () => {
+  const getBookmarkIcon = () => {
     if (favorite) {
       return <i className="bi bi-bookmark-heart-fill"></i>;
     } else {
@@ -14,7 +14,7 @@ const BookMark = () => {
   return (
     <td className="text-center">
       <span className="bookmark" onClick={isFavorite}>
-        {qwer()}
+        {getBookmarkIcon()}
       </span>
     </td>
   );
