@@ -7,7 +7,7 @@ const SearchStatus = ({ renderPhrase, users }) => {
 
 SearchStatus.propTypes = {
   renderPhrase: PropTypes.func.isRequired,
-  users: PropTypes.array.isRequired
+  users: PropTypes.number.isRequired
 };
 
 export default SearchStatus;
