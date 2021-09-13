@@ -11,9 +11,7 @@ const User = ({ handleDelete, user }) => {
       <td>{user.profession.name}</td>
       <td>{user.completedMeetings}</td>
       <td>{user.rate}</td>
-      <td>
-        <BookMark />
-      </td>
+      <BookMark />
       <td>
         <button
           onClick={() => handleDelete(user._id)}
@@ -28,7 +26,7 @@ const User = ({ handleDelete, user }) => {
 
 User.propTypes = {
   handleDelete: PropTypes.func.isRequired,
-  user: PropTypes.array.isRequired
+  user: PropTypes.object.isRequired
 };
 
 export default User;
