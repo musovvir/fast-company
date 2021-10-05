@@ -67,7 +67,7 @@ const Users = ({ handleDelete, renderPhrase, users }) => {
             users={allUsers}
             handleDelete={handleDelete}
             onSort={handleSort}
-            currentSort={sortBy}
+            selectedSort={sortBy}
           />
         )}
         <div className="d-flex justify-content-center">
