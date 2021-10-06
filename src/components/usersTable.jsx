@@ -29,7 +29,7 @@ UsersTable.propTypes = {
   users: PropTypes.array.isRequired,
   handleDelete: PropTypes.func.isRequired,
   onSort: PropTypes.func.isRequired,
-  currentSort: PropTypes.object.isRequired
+  selectedSort: PropTypes.object.isRequired
 };
 
 export default UsersTable;
